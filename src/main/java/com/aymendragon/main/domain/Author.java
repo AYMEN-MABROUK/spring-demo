@@ -1,5 +1,6 @@
 package com.aymendragon.main.domain;
 
+import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,9 +18,14 @@ public class Author {
   private String lastName;
 
   @ManyToMany(mappedBy = "authors")
-  private Set<Book> books;
+  private Set<Book> books = new HashSet<>();
 
   public Author() {
+  }
+
+  public Author(String firstName, String lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
   }
 
   public Author(String firstName, String lastName, Set<Book> books) {
